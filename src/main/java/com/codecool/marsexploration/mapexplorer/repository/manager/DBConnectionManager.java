@@ -20,14 +20,14 @@ public class DBConnectionManager {
 
     private void createTableIfNotExists() {
         //there is no boolean value in sqlite, use int 0 or 1
-        //BLOB is a catch-all that returns data as it was entered - we need to figure out how to log resources first, before defining this field
+        //TODO: update "resources" field: we need to figure out how to log them first, before defining this field
         try (Statement statement = connection.createStatement()) {
             String createTableSQL = "CREATE TABLE IF NOT EXISTS logs (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "timestamp TEXT" +
-                    "number_of_steps INTEGER," +
-                    "resources BLOB" +
-                    "successful_outcome INTEGER)";
+                    "id INTEGER PRIMARY KEY," +
+                    "timestamp TEXT NOT NULL UNIQUE," +
+                    "number_of_steps INTEGER NOT NULL," +
+                    "resources TEXT NOT NULL," +
+                    "successful_outcome INTEGER NOT NULL)";
             statement.executeUpdate(createTableSQL);
         } catch (SQLException e) {
             e.printStackTrace();
