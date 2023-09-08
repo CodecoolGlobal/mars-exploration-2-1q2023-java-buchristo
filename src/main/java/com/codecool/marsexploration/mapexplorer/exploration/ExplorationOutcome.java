@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.mapexplorer.exploration.outcome;
+package com.codecool.marsexploration.mapexplorer.exploration;
 
 public enum ExplorationOutcome {
     ERROR,

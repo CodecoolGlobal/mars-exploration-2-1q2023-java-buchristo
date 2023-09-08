@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.mapexplorer.exploration.outcome;
+package com.codecool.marsexploration.mapexplorer.exploration.analyzer;
 
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationContext;
 
