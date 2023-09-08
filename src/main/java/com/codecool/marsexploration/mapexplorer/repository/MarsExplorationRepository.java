@@ -1,27 +1,27 @@
 package com.codecool.marsexploration.mapexplorer.repository;
 
-import com.codecool.marsexploration.mapexplorer.exploration.outcome.Outcome;
+import com.codecool.marsexploration.mapexplorer.repository.log.DatabaseLog;
 
 import java.util.List;
 
-public class MarsExplorationRepository implements Repository<Outcome> {
+public class MarsExplorationRepository implements Repository<DatabaseLog> {
     @Override
-    public Outcome getById(int id) {
+    public DatabaseLog getById(int id) {
         return null;
     }
 
     @Override
-    public List<Outcome> getAll() {
+    public List<DatabaseLog> getAll() {
         return null;
     }
 
     @Override
-    public void insert(Outcome outcome) {
+    public void insert(DatabaseLog databaseLog) {
 
     }
 
     @Override
-    public void update(Outcome outcome) {
+    public void update(DatabaseLog databaseLog) {
 
     }
 

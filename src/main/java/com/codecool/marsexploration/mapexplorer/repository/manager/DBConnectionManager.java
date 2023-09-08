@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.mapexplorer.repository;
+package com.codecool.marsexploration.mapexplorer.repository.manager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
