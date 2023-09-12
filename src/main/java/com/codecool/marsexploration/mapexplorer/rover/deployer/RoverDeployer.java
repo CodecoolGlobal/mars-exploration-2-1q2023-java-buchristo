@@ -1,8 +1,8 @@
 package com.codecool.marsexploration.mapexplorer.rover.deployer;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
-import com.codecool.marsexploration.mapexplorer.rover.Rover;
+import com.codecool.marsexploration.mapexplorer.rover.RoverImpl;
 
 public interface RoverDeployer {
-    Rover deployRover(Coordinate landingCoordinates);
+    RoverImpl deployRover(Coordinate landingCoordinates);
 }

@@ -3,6 +3,10 @@ package com.codecool.marsexploration.mapexplorer;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoaderImpl;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+import com.codecool.marsexploration.mapexplorer.rover.Rover;
+import com.codecool.marsexploration.mapexplorer.rover.RoverImpl;
+
+import java.util.List;
 
 public class Application {
     private static final String workDir = "src/main";
