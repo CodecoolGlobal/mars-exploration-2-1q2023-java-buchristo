@@ -1,6 +1,8 @@
 package com.codecool.marsexploration.mapexplorer;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
+import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
+import com.codecool.marsexploration.mapexplorer.validator.*;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoaderImpl;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
@@ -20,19 +22,40 @@ public class Application {
     static Coordinate landingCoordinates = new Coordinate(6, 6);
     static List<String> resourcesToScanFor = List.of(MINERAL, WATER);
     static int simTimeOut = 1000;
-    static Config config = new Config(mapFilePath, landingCoordinates, resourcesToScanFor, simTimeOut);
 
     public static void main(String[] args) {
+        Config config = new Config(mapFilePath, landingCoordinates, resourcesToScanFor, simTimeOut);
+
+        List<Validator> setupValidators = List.of(
+                new MapFilePathValidator(config),
+                new SimulationTimeoutValidator(config),
+                new ResourceSymbolsValidator(config)
+        );
+
+        //validation.run(setupValidators);
+
         MapLoader mapLoader = new MapLoaderImpl();
         Map map = mapLoader.load(mapFilePath);
-        Rover rover = new RoverImpl("rover-1", landingCoordinates, 1, resourcesToScanFor);
+
+        List<Validator> mapValidators = List.of(
+                new MapValidatorImpl(map),
+                new LandingCoordinatesValidator(map, config),
+                new RoverDeploymentConditionsValidator(map, config)
+        );
+
+        //validation.run(mapValidators);
+
+        Rover rover = new RoverImpl("rover-1", config.landingCoordinates(), 1, config.resourceSymbols());
         RoverDeployer roverDeployer = new RoverDeployerImpl(map, rover);
-        System.out.println(rover.getCurrentPos());
-        roverDeployer.deployRover();
-        System.out.println(rover.getCurrentPos());
-        //liste an resources
-        //visibility range
-        //
+
+        SimulationState simulationState = new SimulationState(
+                config.simulationTimeout(),
+                rover,
+                map,
+                config.landingCoordinates(),
+                config.resourceSymbols()
+        );
+
 
         // Create config, map loader, validators, analyzers etc.
 
