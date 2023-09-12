@@ -2,10 +2,12 @@ package com.codecool.marsexploration.mapexplorer.configuration.validator;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
 
+import java.io.File;
+
 public class MapFileValidator implements ConfigValidator {
     @Override
     public boolean validate(Config config) {
-        //is the file path not empty (but I'd also say: is it a correct path, i.e. pointing to a .map file)
-        return false;
+        File file = new File(config.mapFilePath());
+        return file.exists() && !file.isDirectory();
     }
 }
