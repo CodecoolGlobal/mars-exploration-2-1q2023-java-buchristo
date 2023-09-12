@@ -1,10 +1,7 @@
 package com.codecool.marsexploration.mapexplorer.configuration.validator;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
-import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
-
-import java.util.List;
 
 public class RoverDeploymentConditionsValidator implements ConfigValidator {
     private final Map map;
