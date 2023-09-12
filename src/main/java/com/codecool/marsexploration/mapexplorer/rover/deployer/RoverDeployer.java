@@ -4,5 +4,5 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.rover.RoverImpl;
 
 public interface RoverDeployer {
-    RoverImpl deployRover(Coordinate landingCoordinates);
+    void deployRover();
 }
