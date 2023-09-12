@@ -1,7 +1,7 @@
 package com.codecool.marsexploration.mapexplorer.exploration.analyzer;
 
-import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationContext;
+import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 
 public interface OutcomeAnalyzer {
-    boolean analyze(SimulationContext context);
+    boolean analyze(SimulationState context);
 }

@@ -1,6 +1,6 @@
 package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 
-public class SimulationContext {
+public class SimulationState {
     //stores data:
     //The number of steps -> I suppose this is the number of steps already taken?
     //The number of steps required to reach a timeout

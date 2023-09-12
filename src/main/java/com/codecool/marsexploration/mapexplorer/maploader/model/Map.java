@@ -42,6 +42,8 @@ public class Map {
         int x = coordinate.X();
         int y = coordinate.Y();
 
+        //check if even on map, and only return those
+
         return List.of(
                 new Coordinate(x - 1, y - 1),
                 new Coordinate(x, y - 1),

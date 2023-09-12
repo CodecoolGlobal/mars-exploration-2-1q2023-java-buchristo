@@ -1,10 +1,10 @@
 package com.codecool.marsexploration.mapexplorer.exploration.analyzer;
 
-import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationContext;
+import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 
 public class LackOfResourcesAnalyzer implements OutcomeAnalyzer {
     @Override
-    public boolean analyze(SimulationContext context) {
+    public boolean analyze(SimulationState context) {
         //checks whether the rover almost explored the whole chart and no right condition is found.
         return false;
     }

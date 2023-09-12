@@ -16,7 +16,7 @@ public class Application {
 
         // Create config, map loader, validators, analyzers etc.
 
-        //run simulation
+        //run simulation validator, if true, run sim
 
     }
 }

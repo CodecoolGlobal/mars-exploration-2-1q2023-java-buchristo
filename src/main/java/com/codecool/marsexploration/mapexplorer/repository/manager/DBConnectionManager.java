@@ -20,13 +20,13 @@ public class DBConnectionManager {
 
     private void createTableIfNotExists() {
         //there is no boolean value in sqlite, use int 0 or 1
-        //TODO: update "resources" field: we need to figure out how to log them first, before defining this field
         try (Statement statement = connection.createStatement()) {
             String createTableSQL = "CREATE TABLE IF NOT EXISTS logs (" +
                     "id INTEGER PRIMARY KEY," +
                     "timestamp TEXT NOT NULL UNIQUE," +
                     "number_of_steps INTEGER NOT NULL," +
-                    "resources TEXT NOT NULL," +
+                    "minerals int NOT NULL," +
+                    "water int NOT NULL," +
                     "successful_outcome INTEGER NOT NULL)";
             statement.executeUpdate(createTableSQL);
         } catch (SQLException e) {

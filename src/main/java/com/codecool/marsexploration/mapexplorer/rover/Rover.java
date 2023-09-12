@@ -1,8 +1,24 @@
 package com.codecool.marsexploration.mapexplorer.rover;
 
-public interface Rover {
-    //fields needed in impl: id, currentPos, visibilityRange, one or more collections for spotted resources
-    //what methods would be good? move/deploy, scanForResources, recordCoordinates, returnToBase?
-    //Journey seems to suggest that Move/Scan/etc. could be implementations of a SimulationStep interface (rather than rover methods)
-        //let's talk about it and decide how we want to do it
+import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+
+import java.util.*;
+
+public class Rover {
+    private final String id;
+    private final int visibilityRange;
+    private Coordinate currentPos;
+    private Map<String, Set<Coordinate>> resources = new HashMap<>();
+
+    public Rover(String id, Coordinate currentPos, int visibilityRange, List<String> resourcesToScanFor) {
+        this.id = id;
+        this.currentPos = currentPos;
+        this.visibilityRange = visibilityRange;
+        resourcesToScanFor.forEach(resourceName -> resources.put(resourceName, new HashSet<>()));
+    }
+
+    public String getId(){
+        return id;
+    }
+
 }
