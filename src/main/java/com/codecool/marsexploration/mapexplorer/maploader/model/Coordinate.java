@@ -13,7 +13,9 @@ public record Coordinate(int X, int Y) {
         List<Coordinate> fieldOfView = new ArrayList<>();
         for (int i = 0; i <scanEdgeLength ; i++) {
             for (int j= 0; j < scanEdgeLength; j++) {
-                fieldOfView.add(new Coordinate(i,j));
+                if(i != xStart && j != yStart){
+                    fieldOfView.add(new Coordinate(i,j));
+                }
             }
         }
 
