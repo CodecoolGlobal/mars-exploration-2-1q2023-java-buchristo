@@ -25,7 +25,7 @@ public class MapLoaderImpl implements MapLoader {
                 }
             }
 
-            return new Map(map, true);
+            return new Map(map);
 
         } catch (FileNotFoundException e) {
             System.err.println("Error reading file: " + e.getMessage());

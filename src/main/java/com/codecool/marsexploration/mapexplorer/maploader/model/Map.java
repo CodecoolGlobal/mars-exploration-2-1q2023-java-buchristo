@@ -4,11 +4,9 @@ import java.util.List;
 
 public class Map {
     private String[][] representation;
-    private boolean successfullyGenerated;
 
-    public Map(String[][] representation, boolean successfullyGenerated) {
+    public Map(String[][] representation) {
         this.representation = representation;
-        this.successfullyGenerated = successfullyGenerated;
     }
 
     public int getDimension() {
