@@ -1,5 +1,7 @@
 package com.codecool.marsexploration.mapexplorer.maploader.model;
 
+import java.util.List;
+
 public class Map {
     private String[][] representation;
     private boolean successfullyGenerated;
@@ -36,6 +38,22 @@ public class Map {
         return representation[coordinate.X()][coordinate.Y()] == null
                 || representation[coordinate.X()][coordinate.Y()].isEmpty()
                 || representation[coordinate.X()][coordinate.Y()].equals(" ");
+    }
+
+    public List<Coordinate> getAdjacent(Coordinate coordinate) {
+        int x = coordinate.X();
+        int y = coordinate.Y();
+
+        return List.of(
+                new Coordinate(x - 1, y - 1),
+                new Coordinate(x, y - 1),
+                new Coordinate(x + 1, y - 1),
+                new Coordinate(x + 1, y),
+                new Coordinate(x + 1, y + 1),
+                new Coordinate(x, y + 1),
+                new Coordinate(x - 1, y + 1),
+                new Coordinate(x - 1, y)
+        );
     }
 
     @Override

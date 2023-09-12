@@ -15,20 +15,7 @@ public class RoverDeploymentConditionsValidator implements ConfigValidator {
 
     @Override
     public boolean validate(Config config) {
-        int x = config.landingCoordinates().X();
-        int y = config.landingCoordinates().Y();
-        List<Coordinate> coordinates = List.of(
-                new Coordinate(x - 1, y - 1),
-                new Coordinate(x, y - 1),
-                new Coordinate(x + 1, y - 1),
-                new Coordinate(x + 1, y),
-                new Coordinate(x + 1, y + 1),
-                new Coordinate(x, y + 1),
-                new Coordinate(x - 1, y + 1),
-                new Coordinate(x - 1, y)
-        );
-
-        return coordinates.stream()
+        return map.getAdjacent(config.landingCoordinates()).stream()
                 .anyMatch(c -> map.isEmpty(c));
     }
 }
