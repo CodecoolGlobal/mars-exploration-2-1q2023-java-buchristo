@@ -11,10 +11,10 @@ public record Coordinate(int X, int Y) {
         int scanEdgeLength = (scanRadius*2)+1;
 
         List<Coordinate> fieldOfView = new ArrayList<>();
-        for (int i = 0; i <scanEdgeLength ; i++) {
+        for (int i = 0; i < scanEdgeLength ; i++) {
             for (int j= 0; j < scanEdgeLength; j++) {
-                if(i != xStart && j != yStart){
-                    fieldOfView.add(new Coordinate(i,j));
+                if(i + xStart != this.X || j + yStart != this.Y){
+                    fieldOfView.add(new Coordinate(xStart + i, yStart + j));
                 }
             }
         }

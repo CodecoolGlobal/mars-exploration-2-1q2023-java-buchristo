@@ -1,7 +1,14 @@
 package com.codecool.marsexploration.mapexplorer;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
+import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
+import com.codecool.marsexploration.mapexplorer.maploader.MapLoaderImpl;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
+import com.codecool.marsexploration.mapexplorer.rover.Rover;
+import com.codecool.marsexploration.mapexplorer.rover.RoverImpl;
+import com.codecool.marsexploration.mapexplorer.rover.deployer.RoverDeployer;
+import com.codecool.marsexploration.mapexplorer.rover.deployer.RoverDeployerImpl;
 
 import java.util.List;
 
@@ -16,6 +23,13 @@ public class Application {
     static Config config = new Config(mapFilePath, landingCoordinates, resourcesToScanFor, simTimeOut);
 
     public static void main(String[] args) {
+        MapLoader mapLoader = new MapLoaderImpl();
+        Map map = mapLoader.load(mapFilePath);
+        Rover rover = new RoverImpl("rover-1", landingCoordinates, 1, resourcesToScanFor);
+        RoverDeployer roverDeployer = new RoverDeployerImpl(map, rover);
+        System.out.println(rover.getCurrentPos());
+        roverDeployer.deployRover();
+        System.out.println(rover.getCurrentPos());
         //liste an resources
         //visibility range
         //
