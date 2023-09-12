@@ -1,6 +1,7 @@
 package com.codecool.marsexploration.mapexplorer.maploader.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Map {
     private String[][] representation;
@@ -38,22 +39,17 @@ public class Map {
                 || representation[coordinate.X()][coordinate.Y()].equals(" ");
     }
 
-    public List<Coordinate> getAdjacent(Coordinate coordinate) {
+    public List<Coordinate> removeOutOfMapCoordinates(List<Coordinate> coordinates) {
+        return coordinates.stream()
+                .filter(this::coordinateIsOnMap)
+                .collect(Collectors.toList());
+    }
+
+    public boolean coordinateIsOnMap (Coordinate coordinate) {
         int x = coordinate.X();
         int y = coordinate.Y();
-
-        //check if even on map, and only return those
-
-        return List.of(
-                new Coordinate(x - 1, y - 1),
-                new Coordinate(x, y - 1),
-                new Coordinate(x + 1, y - 1),
-                new Coordinate(x + 1, y),
-                new Coordinate(x + 1, y + 1),
-                new Coordinate(x, y + 1),
-                new Coordinate(x - 1, y + 1),
-                new Coordinate(x - 1, y)
-        );
+        int mapLength = representation.length;
+        return x >= 0 && x < mapLength && y >= 0 && y < mapLength;
     }
 
     @Override
