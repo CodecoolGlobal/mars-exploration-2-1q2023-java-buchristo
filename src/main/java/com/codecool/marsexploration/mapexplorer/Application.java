@@ -1,6 +1,7 @@
 package com.codecool.marsexploration.mapexplorer;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
+import com.codecool.marsexploration.mapexplorer.exploration.simulation.ExplorationSimulator;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.validator.*;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
@@ -57,6 +58,7 @@ public class Application {
 
                 Rover rover = new RoverImpl("rover-1", config.landingCoordinates(), 1, config.resourceSymbols());
                 RoverDeployer roverDeployer = new RoverDeployerImpl(map, rover);
+                roverDeployer.deployRover();
 
                 SimulationState simulationState = new SimulationState(
                         config.simulationTimeout(),
@@ -66,6 +68,7 @@ public class Application {
                         config.resourceSymbols()
                 );
 
+                ExplorationSimulator explorationSimulator = new ExplorationSimulator(simulationState, rover);
                 // Create config, map loader, validators, analyzers etc.
 
                 //run simulation validator, if true, run sim

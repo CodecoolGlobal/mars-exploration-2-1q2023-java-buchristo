@@ -1,6 +1,21 @@
 package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 
+import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
+import com.codecool.marsexploration.mapexplorer.rover.Rover;
+
 public class ExplorationSimulator {
+
+    private final SimulationState simulationState;
+    private final Rover rover;
+    public ExplorationSimulator(SimulationState simulationState, Rover rover) {
+        this.simulationState = simulationState;
+        this.rover = rover;
+    }
+
+    public void run(){
+        while (simulationState.isRunning()){
+        }
+    }
     //receive a map loader
     //receive a config record
     //receive a list of SOME validator implementations
