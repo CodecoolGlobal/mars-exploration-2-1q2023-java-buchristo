@@ -1,6 +1,9 @@
 package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 
 public class ExplorationSimulator {
+
+
+
     //receive a map loader
     //receive a config record
     //receive a list of SOME validator implementations
