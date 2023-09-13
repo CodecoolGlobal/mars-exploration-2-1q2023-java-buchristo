@@ -1,19 +1,26 @@
 package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 
+import com.codecool.marsexploration.mapexplorer.exploration.analyzer.ResourceAnalyzer;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
 public class ExplorationSimulator {
     private final SimulationState simulationState;
-    private final Rover rover;
-    public ExplorationSimulator(SimulationState simulationState, Rover rover) {
+    private Rover rover;
+    private Map map;
+    public ExplorationSimulator(SimulationState simulationState) {
         this.simulationState = simulationState;
-        this.rover = rover;
+        this.rover = simulationState.getRover();
+        this.map = simulationState.getMap();
     }
 
     public void run(){
-        while (simulationState.isRunning()){
-        }
+        ResourceAnalyzer resourceAnalyzer = new ResourceAnalyzer();
+        resourceAnalyzer.analyze(simulationState);
+
+            //start simulation loop (until timeout)
+            //move, scan, analyze outcome of step, log & update context, increment loop
+            //Journey seems to suggest a SimulationStep interface with move etc. as implementations
     }
     //receive a map loader
     //receive a config record
@@ -33,11 +40,6 @@ public class ExplorationSimulator {
 
 
     //generate the "simulation context"
-
-    
-    //start simulation loop (until timeout)
-        //move, scan, analyze outcome of step, log & update context, increment loop
-            //Journey seems to suggest a SimulationStep interface with move etc. as implementations
 
     //when sim is finished, log the final outcome and/or store it in a SQL database
 }

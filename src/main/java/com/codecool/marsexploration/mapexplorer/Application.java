@@ -68,7 +68,8 @@ public class Application {
                         config.resourceSymbols()
                 );
 
-                ExplorationSimulator explorationSimulator = new ExplorationSimulator(simulationState, rover);
+                ExplorationSimulator explorationSimulator = new ExplorationSimulator(simulationState);
+                explorationSimulator.run();
                 // Create config, map loader, validators, analyzers etc.
 
                 //run simulation validator, if true, run sim

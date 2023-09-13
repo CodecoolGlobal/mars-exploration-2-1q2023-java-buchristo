@@ -50,4 +50,20 @@ public class SimulationState {
     public int getNumberOfStepsTaken() {
         return numberOfStepsTaken;
     }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public int getSimulationTimeout() {
+        return simulationTimeout;
+    }
+
+    public List<String> getResourcesToScan() {
+        return resourcesToScan;
+    }
+
+    public Rover getRover() {
+        return rover;
+    }
 }
