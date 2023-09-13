@@ -33,34 +33,47 @@ public class Application {
         );
 
         //validation.run(setupValidators);
+        boolean initialValidation = setupValidators.get(0).validate()
+                && setupValidators.get(1).validate()
+                && setupValidators.get(2).validate();
 
-        MapLoader mapLoader = new MapLoaderImpl();
-        Map map = mapLoader.load(mapFilePath);
+        if (initialValidation) {
+            MapLoader mapLoader = new MapLoaderImpl();
+            Map map = mapLoader.load(mapFilePath);
 
-        List<Validator> mapValidators = List.of(
-                new MapValidatorImpl(map),
-                new LandingCoordinatesValidator(map, config),
-                new RoverDeploymentConditionsValidator(map, config)
-        );
+            List<Validator> mapValidators = List.of(
+                    new MapValidatorImpl(map),
+                    new LandingCoordinatesValidator(map, config),
+                    new RoverDeploymentConditionsValidator(map, config)
+            );
 
-        //validation.run(mapValidators);
-
-        Rover rover = new RoverImpl("rover-1", config.landingCoordinates(), 1, config.resourceSymbols());
-        RoverDeployer roverDeployer = new RoverDeployerImpl(map, rover);
-
-        SimulationState simulationState = new SimulationState(
-                config.simulationTimeout(),
-                rover,
-                map,
-                config.landingCoordinates(),
-                config.resourceSymbols()
-        );
+            boolean mapValidation = mapValidators.get(0).validate()
+                    && mapValidators.get(1).validate()
+                    && mapValidators.get(2).validate();
+            //validation.run(mapValidators);
 
 
-        // Create config, map loader, validators, analyzers etc.
+            if (mapValidation) {
 
-        //run simulation validator, if true, run sim
+                Rover rover = new RoverImpl("rover-1", config.landingCoordinates(), 1, config.resourceSymbols());
+                RoverDeployer roverDeployer = new RoverDeployerImpl(map, rover);
 
+                SimulationState simulationState = new SimulationState(
+                        config.simulationTimeout(),
+                        rover,
+                        map,
+                        config.landingCoordinates(),
+                        config.resourceSymbols()
+                );
+
+                // Create config, map loader, validators, analyzers etc.
+
+                //run simulation validator, if true, run sim
+            } else {
+                System.out.println("Map validation failed!");
+            }
+        } else {
+            System.out.println("Initial validation failed!");
+        }
     }
 }
-
