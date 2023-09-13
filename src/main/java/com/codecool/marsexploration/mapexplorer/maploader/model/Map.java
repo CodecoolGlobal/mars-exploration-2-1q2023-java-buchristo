@@ -14,6 +14,10 @@ public class Map {
         return representation.length;
     }
 
+    public String[][] getRepresentation() {
+        return representation;
+    }
+
     private static String createStringRepresentation(String[][] arr) {
         StringBuilder sb = new StringBuilder();
 

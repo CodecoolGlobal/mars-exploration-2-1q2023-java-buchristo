@@ -22,8 +22,8 @@ public class Application {
     static String mapFilePath = workDir + "/resources/maps/exploration-0.map";
     static Coordinate landingCoordinates = new Coordinate(6, 6);
     static List<String> resourcesToScanFor = List.of(MINERAL, WATER);
-    static int simTimeOut = 10;
-    static int mineralsInt = 30;
+    static int simTimeOut = 1000;
+    static int mineralsInt = 2;
 
     public static void main(String[] args) {
         Config config = new Config(mapFilePath, landingCoordinates, resourcesToScanFor, simTimeOut, mineralsInt);
