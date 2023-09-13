@@ -4,7 +4,6 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
 public class ExplorationSimulator {
-
     private final SimulationState simulationState;
     private final Rover rover;
     public ExplorationSimulator(SimulationState simulationState, Rover rover) {
