@@ -25,8 +25,8 @@ public class DBConnectionManager {
                     "id INTEGER PRIMARY KEY," +
                     "timestamp TEXT NOT NULL UNIQUE," +
                     "number_of_steps INTEGER NOT NULL," +
-                    "minerals int NOT NULL," +
-                    "water int NOT NULL," +
+                    "minerals INTEGER NOT NULL," +
+                    "water INTEGER NOT NULL," +
                     "successful_outcome INTEGER NOT NULL)";
             statement.executeUpdate(createTableSQL);
         } catch (SQLException e) {

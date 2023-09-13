@@ -2,19 +2,49 @@ package com.codecool.marsexploration.mapexplorer.rover;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public interface Rover{
-    public String getId();
+public class RoverImpl implements Rover{
+    private final String id;
+    private final int visibilityRange;
+    private Coordinate currentPos;
+    private Map<String, Set<Coordinate>> resources = new HashMap<>();
 
-    public int getVisibilityRange();
+    public RoverImpl(String id, Coordinate currentPos, int visibilityRange, List<String> resourcesToScanFor) {
+        this.id = id;
+        this.currentPos = currentPos;
+        this.visibilityRange = visibilityRange;
+        resourcesToScanFor.forEach(resourceName -> resources.put(resourceName, new HashSet<>()));
+    }
 
-    public void setCurrentPos(Coordinate coordinate);
+    @Override
+    public String getId(){
+        return id;
+    }
 
-    public Coordinate getCurrentPos();
+    @Override
+    public int getVisibilityRange() {
+        return visibilityRange;
+    }
 
-    public void setResources(String name, Coordinate coordinates);
+    @Override
+    public void setCurrentPos(Coordinate coordinate) {
+        this.currentPos = coordinate;
+    }
 
-    public Map<String, Set<Coordinate>> getResources();
+    @Override
+    public Coordinate getCurrentPos() {
+        return currentPos;
+    }
+
+    @Override
+    public void setResources(String name, Coordinate coordinates){
+        resources.get(name).add(coordinates);
+    }
+
+    @Override
+    public Map<String, Set<Coordinate>> getResources() {
+        return resources;
+    }
+
 }

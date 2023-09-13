@@ -81,7 +81,7 @@ public class SimulationState {
         this.visitedCoordinates.add(coordinate);
     }
 
-    public int getMineralsInt() {
+    public int getMineralsGoal() {
         return mineralsInt;
     }
 }
