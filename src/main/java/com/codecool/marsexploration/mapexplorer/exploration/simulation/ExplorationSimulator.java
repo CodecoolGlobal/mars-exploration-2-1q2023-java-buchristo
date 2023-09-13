@@ -1,6 +1,8 @@
 package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 
 import com.codecool.marsexploration.mapexplorer.exploration.analyzer.ResourceAnalyzer;
+import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngine;
+import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngineRandom;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
@@ -15,8 +17,27 @@ public class ExplorationSimulator {
     }
 
     public void run(){
+        MovementEngine movementEngine = new MovementEngineRandom();
         ResourceAnalyzer resourceAnalyzer = new ResourceAnalyzer();
-        resourceAnalyzer.analyze(simulationState);
+        while(simulationState.isRunning()) {
+
+            movementEngine.moveRover(simulationState);
+            resourceAnalyzer.analyze(simulationState);
+            int nextStepNumber = simulationState.getNumberOfStepsTaken() + 1;
+            simulationState.setNumberOfStepsTaken(nextStepNumber);
+            if (nextStepNumber >= simulationState.getSimulationTimeout()) {
+                simulationState.setIsRunningToFalse();
+            }
+            if (rover.getResources().get("%").size() >= simulationState.getMineralsInt()) {
+                simulationState.setIsRunningToFalse();
+                simulationState.setSuccessToTrue();
+            }
+
+        }
+        if (simulationState.isSuccess()) {System.out.println("Success!");}
+        else {
+            System.out.println("The only thing I found was a photo of your wife.");
+        }
 
             //start simulation loop (until timeout)
             //move, scan, analyze outcome of step, log & update context, increment loop

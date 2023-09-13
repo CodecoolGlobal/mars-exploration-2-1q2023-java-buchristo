@@ -39,6 +39,10 @@ public class Map {
                 || representation[coordinate.X()][coordinate.Y()].equals(" ");
     }
 
+    public List<Coordinate> getEmptyCoordinates(List<Coordinate> coordinates) {
+        return coordinates.stream().filter(this::isEmpty).toList();
+    }
+
     public List<Coordinate> removeOutOfMapCoordinates(List<Coordinate> coordinates) {
         return coordinates.stream()
                 .filter(this::coordinateIsOnMap)

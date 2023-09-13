@@ -19,6 +19,9 @@ public class ResourceAnalyzer implements OutcomeAnalyzer{
         List<Coordinate> mineralsWeCanSee = adjacentCoordinatesOnMap.stream()
                 .filter(r -> map.getByCoordinate(r).equals(simulationState.getResourcesToScan().get(0)))
                 .toList();
+        for (Coordinate coordinate : mineralsWeCanSee) {
+            rover.setResources("%", coordinate);
+        }
 
         return false;
     }

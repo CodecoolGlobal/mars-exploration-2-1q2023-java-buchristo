@@ -8,5 +8,6 @@ public record Config(
         String mapFilePath,
         Coordinate landingCoordinates,
         List<String> resourceSymbols,
-        int simulationTimeout) {
+        int simulationTimeout,
+        int mineralsInt) {
 }
