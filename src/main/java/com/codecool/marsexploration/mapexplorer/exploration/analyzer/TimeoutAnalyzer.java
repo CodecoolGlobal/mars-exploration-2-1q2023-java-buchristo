@@ -2,10 +2,9 @@ package com.codecool.marsexploration.mapexplorer.exploration.analyzer;
 
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 
-public class TimeoutAnalyzer implements OutcomeAnalyzer {
+public class TimeoutAnalyzer implements Analyzer {
     @Override
-    public boolean analyze(SimulationState context) {
-        //checks whether the current step number reached the timeout amount.
-        return false;
+    public boolean analyze(SimulationState state) {
+        return state.getNumberOfStepsTaken() >= state.getSimulationTimeout();
     }
 }

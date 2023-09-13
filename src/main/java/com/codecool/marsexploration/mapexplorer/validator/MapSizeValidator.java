@@ -1,12 +1,11 @@
 package com.codecool.marsexploration.mapexplorer.validator;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
-import com.codecool.marsexploration.mapexplorer.validator.Validator;
 
-public class MapValidatorImpl implements Validator {
+public class MapSizeValidator implements Validator {
     private final Map map;
 
-    public MapValidatorImpl(Map map) {
+    public MapSizeValidator(Map map) {
         this.map = map;
     }
 

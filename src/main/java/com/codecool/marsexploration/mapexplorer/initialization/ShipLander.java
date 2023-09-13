@@ -6,7 +6,6 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Stream;
 
 public class ShipLander {
     private final Random random = new Random();

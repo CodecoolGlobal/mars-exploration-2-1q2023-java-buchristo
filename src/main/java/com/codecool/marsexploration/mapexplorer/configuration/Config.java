@@ -9,5 +9,6 @@ public record Config(
         Coordinate landingCoordinates,
         List<String> resourceSymbols,
         int simulationTimeout,
-        int mineralsInt) {
+        int mineralsGoal,
+        int waterGoal) {
 }

@@ -10,9 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class MapLoaderImpl implements MapLoader {
+public class MapLoader {
 
-    @Override
     public Map load(String mapFile) {
         try(Stream<String> lines = Files.lines(Path.of(mapFile))){
 

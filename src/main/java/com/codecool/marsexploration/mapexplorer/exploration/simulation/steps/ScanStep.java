@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.mapexplorer.exploration.analyzer;
+package com.codecool.marsexploration.mapexplorer.exploration.simulation.steps;
 
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
@@ -7,9 +7,15 @@ import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
 import java.util.List;
 
-public class ResourceAnalyzer implements OutcomeAnalyzer{
+public class ScanStep implements SimulationStep {
+    private final SimulationState simulationState;
+
+    public ScanStep(SimulationState simulationState) {
+        this.simulationState = simulationState;
+    }
+
     @Override
-    public boolean analyze(SimulationState simulationState) {
+    public void executeStep() {
         Rover rover = simulationState.getRover();
         Map map = simulationState.getMap();
         Coordinate currentCoordinate = rover.getCurrentPos();
@@ -22,7 +28,5 @@ public class ResourceAnalyzer implements OutcomeAnalyzer{
         for (Coordinate coordinate : mineralsWeCanSee) {
             rover.setResources("%", coordinate);
         }
-
-        return false;
     }
 }

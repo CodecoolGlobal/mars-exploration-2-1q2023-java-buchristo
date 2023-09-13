@@ -1,6 +1,5 @@
 package com.codecool.marsexploration.mapexplorer.logger;
 
-import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 

@@ -7,17 +7,16 @@ import com.codecool.marsexploration.mapexplorer.rover.Rover;
 import java.util.List;
 import java.util.Random;
 
-public class RoverDeployerImpl implements RoverDeployer{
+public class RoverDeployer {
     private final Map map;
     private final Rover rover;
     Random random = new Random();
 
-    public RoverDeployerImpl(Map map, Rover rover) {
+    public RoverDeployer(Map map, Rover rover) {
         this.map = map;
         this.rover = rover;
     }
 
-    @Override
     public void deployRover() {
         List<Coordinate> adjacent = rover.getCurrentPos().getAdjacent(1);
         List<Coordinate> emptyAndOnMap = adjacent.stream()

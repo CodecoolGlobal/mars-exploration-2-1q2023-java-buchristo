@@ -4,5 +4,5 @@ import com.codecool.marsexploration.mapexplorer.exploration.simulation.Simulatio
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 
 public interface MovementEngine {
-    public void moveRover (SimulationState simulationState);
+    void moveRover (SimulationState simulationState);
 }

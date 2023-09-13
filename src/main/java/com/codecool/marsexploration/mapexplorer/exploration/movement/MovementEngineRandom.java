@@ -7,7 +7,6 @@ import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 public class MovementEngineRandom implements MovementEngine{
     private final Random random = new Random();
