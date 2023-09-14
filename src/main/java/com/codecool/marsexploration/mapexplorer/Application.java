@@ -60,7 +60,7 @@ public class Application {
         List<Validator> mapValidators = List.of(
                 new MapSizeValidator(map),
                 new LandingCoordinatesValidator(map, landingCoordinates),
-                new RoverDeploymentConditionsValidator(map, config)
+                new RoverDeploymentConditionsValidator(map, landingCoordinates)
         );
 
         ExplorationValidator explorationValidator = new ExplorationValidator(mapValidators, logger);
