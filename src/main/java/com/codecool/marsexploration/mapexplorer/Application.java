@@ -89,7 +89,8 @@ public class Application {
         DBConnectionManager dbConnectionManager = new DBConnectionManager();
         Repository repository = new Repository(dbConnectionManager);
         DatabaseLogger DBLogger = new DatabaseLogger(repository);
-        FinalOutcomeLogger finalOutcomeLogger = new FinalOutcomeLogger(logger, mapLogger, DBLogger, simulationState);
+        FinalOutcomeLogger finalOutcomeLogger = new FinalOutcomeLogger(
+                logger, mapLogger, DBLogger, simulationState);
 
         ExplorationSimulator explorationSimulator = new ExplorationSimulator(
                 simulationState,
