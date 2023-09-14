@@ -3,6 +3,8 @@ package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
 import com.codecool.marsexploration.mapexplorer.logger.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class ExplorationSimulator {
     private final SimulationState simulationState;
     private final SimulationStep moveStep;
@@ -33,6 +35,12 @@ public class ExplorationSimulator {
             scanStep.executeStep();
             analyzeStep.executeStep();
             logStep.executeStep();
+
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
 
         finalOutcomeLogger.logOutcome();

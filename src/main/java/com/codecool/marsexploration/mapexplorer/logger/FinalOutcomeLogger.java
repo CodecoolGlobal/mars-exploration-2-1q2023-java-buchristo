@@ -28,6 +28,6 @@ public class FinalOutcomeLogger {
             mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates());
         }
 
-        //databaseLogger.log(simulationState);
+        databaseLogger.log(simulationState);
     }
 }
