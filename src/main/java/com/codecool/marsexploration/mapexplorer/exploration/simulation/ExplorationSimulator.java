@@ -29,7 +29,6 @@ public class ExplorationSimulator {
     }
 
     public void run() {
-
         while (simulationState.isRunning()) {
             moveStep.executeStep();
             scanStep.executeStep();
@@ -42,7 +41,6 @@ public class ExplorationSimulator {
                 Thread.currentThread().interrupt();
             }
         }
-
         finalOutcomeLogger.logOutcome();
     }
 }

@@ -84,8 +84,8 @@ public class Application {
         Analyzer timeoutAnalyzer = new TimeoutAnalyzer();
         Analyzer successAnalyzer = new SuccessAnalyzer();
         SimulationStep analyzeStep = new AnalyzeStep(timeoutAnalyzer, successAnalyzer, simulationState);
-        SimulationStep logStep = new LogStep(logger, simulationState);
         MapLogger mapLogger = new MapLogger();
+        SimulationStep logStep = new LogStep(logger, simulationState, mapLogger);
         DBConnectionManager dbConnectionManager = new DBConnectionManager();
         Repository repository = new Repository(dbConnectionManager);
         DatabaseLogger DBLogger = new DatabaseLogger(repository);
