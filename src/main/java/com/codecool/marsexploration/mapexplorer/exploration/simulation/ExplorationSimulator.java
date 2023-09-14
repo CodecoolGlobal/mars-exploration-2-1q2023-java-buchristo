@@ -37,6 +37,7 @@ public class ExplorationSimulator {
             analyzeStep.executeStep();
             logStep.executeStep();
         }
+
         simulationState.getVisitedCoordinates().add(simulationState.getRover().getCurrentPos());
         finalOutcomeLogger.logOutcome();
     }
