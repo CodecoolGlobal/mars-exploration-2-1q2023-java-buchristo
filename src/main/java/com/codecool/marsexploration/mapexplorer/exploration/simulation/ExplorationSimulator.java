@@ -35,12 +35,6 @@ public class ExplorationSimulator {
             scanStep.executeStep();
             analyzeStep.executeStep();
             logStep.executeStep();
-
-            try {
-                TimeUnit.MILLISECONDS.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
         }
         finalOutcomeLogger.logOutcome();
     }
