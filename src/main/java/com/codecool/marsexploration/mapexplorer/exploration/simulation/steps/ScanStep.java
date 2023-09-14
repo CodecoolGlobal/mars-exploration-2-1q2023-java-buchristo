@@ -28,7 +28,7 @@ public class ScanStep implements SimulationStep {
                 .toList();
 
         List<Coordinate> waterWeCanSee = adjacentCoordinatesOnMap.stream()
-                .filter(r -> map.getByCoordinate(r).equals(simulationState.getResourcesToScan().get(0)))
+                .filter(r -> map.getByCoordinate(r).equals(simulationState.getResourcesToScan().get(1)))
                 .toList();
 
         for (Coordinate coordinate : mineralsWeCanSee) {

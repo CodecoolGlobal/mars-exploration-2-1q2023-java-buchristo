@@ -22,10 +22,10 @@ public class FinalOutcomeLogger {
     public void logOutcome() {
         if (simulationState.isSuccess()) {
             consoleLogger.log("STEP " + simulationState.getNumberOfStepsTaken() + "; OUTCOME: COLONIZABLE");
-            mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates());
+            mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates(), simulationState.getRover().getResources());
         } else {
             consoleLogger.log("STEP " + simulationState.getNumberOfStepsTaken() + "; OUTCOME: TIMEOUT");
-            mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates());
+            mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates(), simulationState.getRover().getResources());
         }
 
         databaseLogger.log(simulationState);

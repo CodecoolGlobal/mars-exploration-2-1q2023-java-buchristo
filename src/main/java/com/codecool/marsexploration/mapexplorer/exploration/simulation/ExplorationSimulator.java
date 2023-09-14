@@ -42,7 +42,6 @@ public class ExplorationSimulator {
                 Thread.currentThread().interrupt();
             }
         }
-
         finalOutcomeLogger.logOutcome();
     }
 }
