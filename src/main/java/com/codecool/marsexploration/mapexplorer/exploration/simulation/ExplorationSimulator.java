@@ -3,6 +3,7 @@ package com.codecool.marsexploration.mapexplorer.exploration.simulation;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
 import com.codecool.marsexploration.mapexplorer.logger.*;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ExplorationSimulator {

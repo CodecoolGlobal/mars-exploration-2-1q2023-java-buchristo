@@ -22,6 +22,5 @@ public class LogStep implements SimulationStep {
                 + "; EVENT: Moved to "
                 + simulationState.getRover().getCurrentPos());
 
-        mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates());
-    }
+        mapLogger.drawExploredMap(simulationState.getMap(), simulationState.getVisitedCoordinates(), simulationState.getRover().getResources());    }
 }
