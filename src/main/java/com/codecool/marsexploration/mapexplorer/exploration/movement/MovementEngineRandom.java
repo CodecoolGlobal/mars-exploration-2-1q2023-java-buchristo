@@ -24,6 +24,7 @@ public class MovementEngineRandom implements MovementEngine{
         Coordinate roverPos = rover.getCurrentPos();
         List<Coordinate> availableCoordinates =
                 map.getEmptyCoordinates(map.removeOutOfMapCoordinates(roverPos.getAdjacent(1)));
+        System.out.println(availableCoordinates.size());
         return availableCoordinates.get(random.nextInt(availableCoordinates.size()));
     }
 }

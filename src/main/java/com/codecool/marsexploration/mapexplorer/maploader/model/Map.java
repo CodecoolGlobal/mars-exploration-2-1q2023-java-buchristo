@@ -44,7 +44,7 @@ public class Map {
     }
 
     public List<Coordinate> getEmptyCoordinates(List<Coordinate> coordinates) {
-        return coordinates.stream().filter(this::isEmpty).toList();
+        return coordinates.stream().filter(this::isEmpty).collect(Collectors.toList());
     }
 
     public List<Coordinate> removeOutOfMapCoordinates(List<Coordinate> coordinates) {
