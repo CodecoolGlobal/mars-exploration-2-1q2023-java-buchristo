@@ -15,7 +15,7 @@ public class RoverDeploymentConditionsValidator implements Validator {
 
     @Override
     public boolean validate() {
-        return landingCoordinates.getAdjacent(1).stream()
+        return map.removeOutOfMapCoordinates(landingCoordinates.getAdjacent(1)).stream()
                 .anyMatch(c -> map.isEmpty(c));
     }
 }

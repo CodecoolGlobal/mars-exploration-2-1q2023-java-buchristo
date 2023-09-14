@@ -30,12 +30,14 @@ public class ExplorationSimulator {
     }
 
     public void run() {
+        scanStep.executeStep();
         while (simulationState.isRunning()) {
             moveStep.executeStep();
             scanStep.executeStep();
             analyzeStep.executeStep();
             logStep.executeStep();
         }
+        simulationState.getVisitedCoordinates().add(simulationState.getRover().getCurrentPos());
         finalOutcomeLogger.logOutcome();
     }
 }

@@ -7,6 +7,7 @@ import com.codecool.marsexploration.mapexplorer.exploration.analyzer.SuccessAnal
 import com.codecool.marsexploration.mapexplorer.exploration.analyzer.TimeoutAnalyzer;
 import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngine;
 import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngineRandom;
+import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngineRandomLines;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.ExplorationSimulator;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
@@ -88,7 +89,7 @@ public class Application {
                 config.mineralsGoal()
         );
 
-        MovementEngine engine = new MovementEngineRandom();
+        MovementEngine engine = new MovementEngineRandomLines();
         SimulationStep moveStep = new MoveStep(engine, simulationState);
         SimulationStep scanStep = new ScanStep(simulationState);
         Analyzer timeoutAnalyzer = new TimeoutAnalyzer();
