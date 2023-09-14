@@ -6,6 +6,7 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rover.Rover;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ScanStep implements SimulationStep {
     private final SimulationState simulationState;
@@ -25,8 +26,16 @@ public class ScanStep implements SimulationStep {
         List<Coordinate> mineralsWeCanSee = adjacentCoordinatesOnMap.stream()
                 .filter(r -> map.getByCoordinate(r).equals(simulationState.getResourcesToScan().get(0)))
                 .toList();
+
+        List<Coordinate> waterWeCanSee = adjacentCoordinatesOnMap.stream()
+                .filter(r -> map.getByCoordinate(r).equals(simulationState.getResourcesToScan().get(0)))
+                .toList();
+
         for (Coordinate coordinate : mineralsWeCanSee) {
             rover.setResources("%", coordinate);
+        }
+        for (Coordinate coordinate : waterWeCanSee) {
+            rover.setResources("*", coordinate);
         }
     }
 }
