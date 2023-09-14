@@ -10,7 +10,7 @@ import java.util.Random;
 public class ShipLander {
     private final Random random = new Random();
 
-    public Coordinate landShip (Map map) {
+    public Coordinate getLandingCoordinates (Map map) {
         List<Coordinate> emptyCoordinates = getEmptyCoordinates(map);
         return emptyCoordinates.get(random.nextInt(emptyCoordinates.size()));
     }

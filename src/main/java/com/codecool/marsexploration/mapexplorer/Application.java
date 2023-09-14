@@ -11,6 +11,7 @@ import com.codecool.marsexploration.mapexplorer.exploration.simulation.Explorati
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
 import com.codecool.marsexploration.mapexplorer.initialization.InitialDirectionGenerator;
+import com.codecool.marsexploration.mapexplorer.initialization.ShipLander;
 import com.codecool.marsexploration.mapexplorer.logger.*;
 import com.codecool.marsexploration.mapexplorer.repository.Repository;
 import com.codecool.marsexploration.mapexplorer.repository.manager.DBConnectionManager;
@@ -27,7 +28,7 @@ import static com.codecool.marsexploration.mapexplorer.Constants.*;
 
 public class Application {
     static String mapFilePath = "src/main/resources/maps/exploration-0.map";
-    static Coordinate landingCoordinates = new Coordinate(6, 6);
+
     static List<String> resourcesToScanFor = List.of(MINERAL, WATER);
     static int simTimeOut = 1000;
     static int mineralsGoal = 4;
@@ -36,7 +37,6 @@ public class Application {
     public static void main(String[] args) {
         Config config = new Config(
                 mapFilePath,
-                landingCoordinates,
                 resourcesToScanFor,
                 simTimeOut,
                 mineralsGoal,
@@ -54,10 +54,12 @@ public class Application {
 
         MapLoader mapLoader = new MapLoader();
         Map map = mapLoader.load(mapFilePath);
+        ShipLander shipLander = new ShipLander();
+        Coordinate landingCoordinates = shipLander.getLandingCoordinates(map);
 
         List<Validator> mapValidators = List.of(
                 new MapSizeValidator(map),
-                new LandingCoordinatesValidator(map, config),
+                new LandingCoordinatesValidator(map, landingCoordinates),
                 new RoverDeploymentConditionsValidator(map, config)
         );
 
@@ -65,12 +67,13 @@ public class Application {
         explorationValidator.validate();
 
         InitialDirectionGenerator initialDirectionGenerator = new InitialDirectionGenerator();
-        Coordinate initialDirection = initialDirectionGenerator.generateInitialDirection(map, config.landingCoordinates());
+        Coordinate initialDirection = initialDirectionGenerator.generateInitialDirection(map, landingCoordinates);
+
         Rover rover = new Rover(
-                config.landingCoordinates(),
+                landingCoordinates,
                 1,
                 config.resourceSymbols(),
-                config.landingCoordinates(),
+                landingCoordinates,
                 initialDirection);
 
         RoverDeployer roverDeployer = new RoverDeployer(map, rover);
@@ -80,7 +83,7 @@ public class Application {
                 config.simulationTimeout(),
                 rover,
                 map,
-                config.landingCoordinates(),
+                landingCoordinates,
                 config.resourceSymbols(),
                 config.mineralsGoal()
         );
