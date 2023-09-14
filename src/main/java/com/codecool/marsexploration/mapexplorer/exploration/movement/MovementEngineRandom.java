@@ -16,6 +16,7 @@ public class MovementEngineRandom implements MovementEngine{
         Rover rover = simulationState.getRover();
         Coordinate nextCoordinate = getRandomEmptyAdjacentCoordinate(map, rover);
         simulationState.addVisitedCoordinate(nextCoordinate);
+        rover.setPreviousPos(rover.getCurrentPos());
         rover.setCurrentPos(nextCoordinate);
     }
 

@@ -65,7 +65,13 @@ public class Application {
 
         InitialDirectionGenerator initialDirectionGenerator = new InitialDirectionGenerator();
         Coordinate initialDirection = initialDirectionGenerator.generateInitialDirection(map, config.landingCoordinates());
-        Rover rover = new Rover(config.landingCoordinates(), 1, config.resourceSymbols(), initialDirection);
+        Rover rover = new Rover(
+                config.landingCoordinates(),
+                1,
+                config.resourceSymbols(),
+                config.landingCoordinates(),
+                initialDirection);
+
         RoverDeployer roverDeployer = new RoverDeployer(map, rover);
         roverDeployer.deployRover();
 
