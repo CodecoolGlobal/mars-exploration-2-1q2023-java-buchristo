@@ -9,7 +9,7 @@ public class Rover {
     private Coordinate currentPos;
     private Map<String, Set<Coordinate>> resources = new HashMap<>();
 
-    public Rover(Coordinate currentPos, int visibilityRange, List<String> resourcesToScanFor) {
+    public Rover(Coordinate currentPos, int visibilityRange, List<String> resourcesToScanFor, Coordinate direction) {
         this.currentPos = currentPos;
         this.visibilityRange = visibilityRange;
         resourcesToScanFor.forEach(resourceName -> resources.put(resourceName, new HashSet<>()));

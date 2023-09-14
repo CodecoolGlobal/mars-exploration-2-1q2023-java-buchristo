@@ -9,6 +9,7 @@ import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEng
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.ExplorationSimulator;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
+import com.codecool.marsexploration.mapexplorer.initialization.InitialDirectionGenerator;
 import com.codecool.marsexploration.mapexplorer.logger.*;
 import com.codecool.marsexploration.mapexplorer.repository.Repository;
 import com.codecool.marsexploration.mapexplorer.repository.manager.DBConnectionManager;
@@ -62,7 +63,9 @@ public class Application {
         ExplorationValidator explorationValidator = new ExplorationValidator(mapValidators, logger);
         explorationValidator.validate();
 
-        Rover rover = new Rover(config.landingCoordinates(), 1, config.resourceSymbols());
+        InitialDirectionGenerator initialDirectionGenerator = new InitialDirectionGenerator();
+        Coordinate initialDirection = initialDirectionGenerator.generateInitialDirection(map, config.landingCoordinates());
+        Rover rover = new Rover(config.landingCoordinates(), 1, config.resourceSymbols(), initialDirection);
         RoverDeployer roverDeployer = new RoverDeployer(map, rover);
         roverDeployer.deployRover();
 
