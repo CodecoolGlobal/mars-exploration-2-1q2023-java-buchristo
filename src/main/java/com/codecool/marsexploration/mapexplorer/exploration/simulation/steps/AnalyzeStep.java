@@ -6,13 +6,17 @@ import com.codecool.marsexploration.mapexplorer.exploration.simulation.Simulatio
 public class AnalyzeStep implements SimulationStep {
     private final Analyzer timeoutAnalyzer;
     private final Analyzer successAnalyzer;
+    private final Analyzer lackOfResourcesAnalyzer;
     private final SimulationState simulationState;
 
     public AnalyzeStep(
             Analyzer timeoutAnalyzer,
-            Analyzer successAnalyzer, SimulationState simulationState) {
+            Analyzer successAnalyzer,
+            Analyzer lackOfResourcesAnalyzer,
+            SimulationState simulationState) {
         this.timeoutAnalyzer = timeoutAnalyzer;
         this.successAnalyzer = successAnalyzer;
+        this.lackOfResourcesAnalyzer = lackOfResourcesAnalyzer;
         this.simulationState = simulationState;
     }
 
@@ -25,6 +29,8 @@ public class AnalyzeStep implements SimulationStep {
         if (successAnalyzer.analyze(simulationState)) {
             simulationState.setIsRunningToFalse();
             simulationState.setSuccessToTrue();
+        } else if (lackOfResourcesAnalyzer.analyze(simulationState)) {
+            simulationState.setIsRunningToFalse();
         }
     }
 }

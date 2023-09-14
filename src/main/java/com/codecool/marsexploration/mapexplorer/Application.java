@@ -2,11 +2,11 @@ package com.codecool.marsexploration.mapexplorer;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Config;
 import com.codecool.marsexploration.mapexplorer.exploration.analyzer.Analyzer;
+import com.codecool.marsexploration.mapexplorer.exploration.analyzer.LackOfResourcesAnalyzer;
 import com.codecool.marsexploration.mapexplorer.exploration.analyzer.SuccessAnalyzer;
 import com.codecool.marsexploration.mapexplorer.exploration.analyzer.TimeoutAnalyzer;
 import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngine;
 import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngineRandom;
-import com.codecool.marsexploration.mapexplorer.exploration.movement.MovementEngineRandomLines;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.ExplorationSimulator;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.SimulationState;
 import com.codecool.marsexploration.mapexplorer.exploration.simulation.steps.*;
@@ -93,7 +93,8 @@ public class Application {
         SimulationStep scanStep = new ScanStep(simulationState);
         Analyzer timeoutAnalyzer = new TimeoutAnalyzer();
         Analyzer successAnalyzer = new SuccessAnalyzer();
-        SimulationStep analyzeStep = new AnalyzeStep(timeoutAnalyzer, successAnalyzer, simulationState);
+        Analyzer lackOfResourcesAnalyzer =  new LackOfResourcesAnalyzer();
+        SimulationStep analyzeStep = new AnalyzeStep(timeoutAnalyzer, successAnalyzer, lackOfResourcesAnalyzer, simulationState);
         MapLogger mapLogger = new MapLogger();
         SimulationStep logStep = new LogStep(logger, simulationState, mapLogger);
         DBConnectionManager dbConnectionManager = new DBConnectionManager();
