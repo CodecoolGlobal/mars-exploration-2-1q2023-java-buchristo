@@ -36,6 +36,7 @@ public class Repository {
             pstmt.setInt(5, log.success());
 
             pstmt.executeUpdate();
+            System.out.println("...database successfully updated.");
         } catch (SQLException e) {
             logger.log(e.getMessage());
         }

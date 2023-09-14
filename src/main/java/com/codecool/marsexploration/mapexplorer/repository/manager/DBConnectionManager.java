@@ -7,19 +7,21 @@ import java.sql.Statement;
 
 public class DBConnectionManager {
     private static final String JDBC_URL = "jdbc:sqlite:src/main/resources/dbs/MarsExploration.db";
-    private Connection connection;
 
-    public DBConnectionManager() {
+    public Connection getConnection() {
+        Connection connection = null;
         try {
             connection = DriverManager.getConnection(JDBC_URL);
-            createTableIfNotExists();
+            createTableIfNotExists(connection);
+            System.out.println("Connection to database successfully created...");
+            return connection;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
-    private void createTableIfNotExists() {
-        //there is no boolean value in sqlite, use int 0 or 1
+    private void createTableIfNotExists(Connection connection) {
         try (Statement statement = connection.createStatement()) {
             String createTableSQL = "CREATE TABLE IF NOT EXISTS logs (" +
                     "id INTEGER PRIMARY KEY," +
@@ -30,20 +32,6 @@ public class DBConnectionManager {
                     "successful_outcome INTEGER NOT NULL)";
             statement.executeUpdate(createTableSQL);
         } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void closeConnection() {
-        try {
-            if(connection != null) {
-                connection.close();
-            }
-        } catch(SQLException e) {
             e.printStackTrace();
         }
     }
