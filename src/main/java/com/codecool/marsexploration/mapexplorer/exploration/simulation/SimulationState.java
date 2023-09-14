@@ -84,5 +84,9 @@ public class SimulationState {
     public int getMineralsGoal() {
         return mineralsInt;
     }
+
+    public Coordinate getShipCoordinates() {
+        return shipCoordinates;
+    }
 }
 

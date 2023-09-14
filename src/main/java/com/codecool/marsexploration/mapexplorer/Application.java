@@ -85,7 +85,7 @@ public class Application {
                 config.mineralsGoal()
         );
 
-        MovementEngine engine = new MovementEngineRandomLines();
+        MovementEngine engine = new MovementEngineRandom();
         SimulationStep moveStep = new MoveStep(engine, simulationState);
         SimulationStep scanStep = new ScanStep(simulationState);
         Analyzer timeoutAnalyzer = new TimeoutAnalyzer();

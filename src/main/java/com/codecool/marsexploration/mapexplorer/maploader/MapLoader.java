@@ -15,14 +15,7 @@ public class MapLoader {
     public Map load(String mapFile) {
         try(Stream<String> lines = Files.lines(Path.of(mapFile))){
 
-            List<String> collectedLines = lines.collect(Collectors.toList());
-            String[][] map = new String[collectedLines.size()][collectedLines.get(0).length()];
-
-            for (int i = 0; i < map.length; i++) {
-                for (int j = 0; j < map[i].length; j++) {
-                    map[i][j] = String.valueOf(collectedLines.get(i).charAt(j));
-                }
-            }
+            String[][] map = lines.map(line -> line.split("")).toArray(String[][]::new);
 
             return new Map(map);
 
