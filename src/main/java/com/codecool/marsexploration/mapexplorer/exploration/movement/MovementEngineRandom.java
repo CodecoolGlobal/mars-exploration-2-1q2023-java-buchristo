@@ -8,8 +8,9 @@ import com.codecool.marsexploration.mapexplorer.rover.Rover;
 import java.util.List;
 import java.util.Random;
 
-public class MovementEngineRandom implements MovementEngine{
+public class MovementEngineRandom implements MovementEngine {
     private final Random random = new Random();
+
     @Override
     public void moveRover(SimulationState simulationState) {
         Map map = simulationState.getMap();
@@ -20,11 +21,12 @@ public class MovementEngineRandom implements MovementEngine{
         rover.setCurrentPos(nextCoordinate);
     }
 
-    private Coordinate getRandomEmptyAdjacentCoordinate (Map map, Rover rover) {
+    private Coordinate getRandomEmptyAdjacentCoordinate(Map map, Rover rover) {
         Coordinate roverPos = rover.getCurrentPos();
-        List<Coordinate> availableCoordinates =
-                map.getEmptyCoordinates(map.removeOutOfMapCoordinates(roverPos.getAdjacent(1)));
+        List<Coordinate> coordinates = map.removeOutOfMapCoordinates(roverPos.getAdjacent(1));
+        List<Coordinate> availableCoordinates = map.getEmptyCoordinates(coordinates);
         System.out.println(availableCoordinates.size());
-        return availableCoordinates.get(random.nextInt(availableCoordinates.size()));
+        int randomIndex = random.nextInt(availableCoordinates.size());
+        return availableCoordinates.get(randomIndex);
     }
 }

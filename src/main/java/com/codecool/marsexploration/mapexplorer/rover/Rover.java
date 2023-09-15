@@ -16,6 +16,8 @@ public class Rover {
         this.visibilityRange = visibilityRange;
         this.previousPos = previousPos;
         this.direction = direction;
+        // No.
+        // No logic, plis.
         resourcesToScanFor.forEach(resourceName -> resources.put(resourceName, new HashSet<>()));
     }
 

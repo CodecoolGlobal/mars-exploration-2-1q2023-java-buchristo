@@ -10,6 +10,7 @@ import java.util.Random;
 public class RoverDeployer {
     private final Map map;
     private final Rover rover;
+    // Breaks the DIP (Dependency Injection Principle)
     Random random = new Random();
 
     public RoverDeployer(Map map, Rover rover) {
@@ -23,6 +24,8 @@ public class RoverDeployer {
                 .filter(map::coordinateIsOnMap)
                 .filter(map::isEmpty)
                 .toList();
-        rover.setCurrentPos(emptyAndOnMap.get(random.nextInt(emptyAndOnMap.size())));
+        int randomIndex = random.nextInt(emptyAndOnMap.size());
+        Coordinate deploymentCoordinate = emptyAndOnMap.get(randomIndex);
+        rover.setCurrentPos(deploymentCoordinate);
     }
 }

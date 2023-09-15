@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Coordinate(int X, int Y) {
-
+// NO.
     public List<Coordinate> getAdjacent(int scanRadius) {
         int xStart = (this.X - scanRadius);
         int yStart = (this.Y - scanRadius);
@@ -18,7 +18,6 @@ public record Coordinate(int X, int Y) {
                 }
             }
         }
-
         return fieldOfView;
     }
 }
