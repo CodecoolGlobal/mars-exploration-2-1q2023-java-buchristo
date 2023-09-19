@@ -31,11 +31,27 @@ public class Application {
     static String mapFilePath = "src/main/resources/maps/exploration-0.map";
 
     static List<String> resourcesToScanFor = List.of(MINERAL, WATER);
-    static int simTimeOut = 1000;
+    static int simTimeOut = 1;
     static int mineralsGoal = 4;
     static int waterGoal = 4;
 
     public static void main(String[] args) {
+
+        System.out.println("\u001B[32m" + "This text is GREEN");
+        System.out.println("\u001B[35m" + "This text is MAGENTA");
+        System.out.println("\u001B[36m" + "This text is CYAN");
+        System.out.println("This text is still CYAN");
+        System.out.println("\033[1m" + "But now it is BOLD!");
+        System.out.println("\033[4m" + "And UNDERLINED!");
+        System.out.println("\u001B[34;45m" + "With frickin' MAGENTA BACKGROUND!!!");
+        System.out.println("\u001B[0m" + "Reset everything to boring, plain white-on-black...");
+
+        System.out.println("\u001B[38;5;208m" + "This is an ORANGE from a 0-255 indexed color table.");
+        System.out.println("\u001B[38;2;175;0;0m" + "this is DARK RED with RGB 175/0/0.");
+
+
+        System.out.println("\n\n\n");
+
         Config config = new Config(
                 mapFilePath,
                 resourcesToScanFor,
