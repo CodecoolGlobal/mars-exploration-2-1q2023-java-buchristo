@@ -37,6 +37,7 @@ public class Application {
 
     public static void main(String[] args) {
 
+        /*
         System.out.println("\u001B[32m" + "This text is GREEN");
         System.out.println("\u001B[35m" + "This text is MAGENTA");
         System.out.println("\u001B[36m" + "This text is CYAN");
@@ -50,7 +51,11 @@ public class Application {
         System.out.println("\u001B[38;2;175;0;0m" + "this is DARK RED with RGB 175/0/0.");
 
 
+
+
         System.out.println("\n\n\n");
+
+         */
 
         Config config = new Config(
                 mapFilePath,
